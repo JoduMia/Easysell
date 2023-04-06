@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main/Main";
 import Login from "../../pages/Login/Login";
 import POS from "../../pages/POS/POS";
+import ManageProducts from "../../pages/ManageProducts/ManageProducts";
 
 export const routes = createBrowserRouter([
     {
@@ -11,7 +12,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/pos',
                 element: <POS/>
-            }
+            },
+            {
+                path: '/manage-products',
+                element: <ManageProducts/>
+            },
         ]
     },
     {
