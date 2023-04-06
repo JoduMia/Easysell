@@ -4,12 +4,22 @@
 import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import { routes } from './routes/Routes/Routes'
-import { useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
+export const ProductContext = createContext();
 function App() {
-const [darkmode, setDarkMode] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [darkmode, setDarkMode] = useState(true);
+  const value = {products}
+  useEffect(() =>{
+      fetch(`products.json`)
+      .then(res => res.json())
+      .then(data => setProducts(data))
+  }, [])
   return (
+    <ProductContext.Provider value={value}>
     <RouterProvider router={routes}/>
+    </ProductContext.Provider>
   )
 }
 
