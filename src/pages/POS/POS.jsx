@@ -2,8 +2,10 @@ import React from 'react';
 import Cart from '../../components/Cart/Cart';
 import DisplayProducts from '../../components/DisplayProducts/DisplayProducts';
 import ProductSearchBar from '../../components/ProductSearchBar/ProductSearchBar';
+import UseTitle from '../../hooks/UseTitle/UseTitle';
 
 const POS = () => {
+    UseTitle('POS');
     return (
         <div className='w-full mx-auto grid grid-cols-3'>
             <div className='col-span-2'>
