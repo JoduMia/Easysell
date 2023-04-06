@@ -1,7 +1,7 @@
 [
     {
     "id": "252.119.157.80/12",
-    "name": "T_shirt",
+    "name": "T-shirt",
     "price": "790",
     "subcategory": "Cloth",
     "rating": "4.4",
@@ -20,7 +20,7 @@
   },
   {
     "id": "252.119.157.80/13",
-    "name": "T_shirt",
+    "name": "Mobile",
     "price": "790",
     "subcategory": "Cloth",
     "rating": "4.4",
@@ -39,7 +39,7 @@
   },
   {
     "id": "252.119.157.80/14",
-    "name": "T_shirt",
+    "name": "iPhone",
     "price": "790",
     "subcategory": "Cloth",
     "rating": "4.9",
@@ -58,7 +58,7 @@
   },
   {
     "id": "252.119.157.80/15",
-    "name": "T_shirt",
+    "name": "Kawsar",
     "price": "790",
     "subcategory": "Cloth",
     "rating": "4.2",
@@ -77,7 +77,7 @@
   },
   {
     "id": "252.119.157.80/16",
-    "name": "T_shirt",
+    "name": "Reun",
     "price": "690",
     "subcategory": "Cloth",
     "rating": "4.8",
@@ -96,7 +96,7 @@
   },
   {
     "id": "252.119.157.80/17",
-    "name": "T_shirt",
+    "name": "Oly Ullah",
     "price": "990",
     "subcategory": "Cloth",
     "rating": "4.5",
@@ -115,7 +115,7 @@
   },
   {
     "id": "252.119.157.80/18",
-    "name": "T_shirt",
+    "name": "Tushar",
     "price": "590",
     "subcategory": "Cloth",
     "rating": "4.0",

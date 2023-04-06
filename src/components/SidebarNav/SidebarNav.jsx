@@ -6,9 +6,9 @@ const SidebarNav = () => {
   const { collapseSidebar } = useProSidebar();
   return (
     <Sidebar className="h-screen">
-      <button onClick={() => collapseSidebar()}>Open</button>
+      {/* <button onClick={() => collapseSidebar()}>Open</button> */}
       <Menu>
-        <MenuItem> Dashboard</MenuItem>
+        <MenuItem component={<Link to="/" />}>Dashboard</MenuItem>
         <MenuItem component={<Link to="/pos" />}> POS</MenuItem>
         <SubMenu label="Inventory">
           <MenuItem component={<Link to="/manage-products" />}> Manage Products </MenuItem>

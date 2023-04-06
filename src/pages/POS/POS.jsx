@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Cart from '../../components/Cart/Cart';
 import DisplayProducts from '../../components/DisplayProducts/DisplayProducts';
 import ProductSearchBar from '../../components/ProductSearchBar/ProductSearchBar';
-import UseTitle from '../../hooks/UseTitle/UseTitle';
+import { ProductContext } from '../../App';
 
 const POS = () => {
-    UseTitle('POS');
+    const {products} = useContext(ProductContext);
+    const clonedProducts = [...products];
+    const [selected, setSelected] = useState(products[0]);
+    const [query, setQuery] = useState('');
+    console.log(query);
+    console.log(selected);
+
+  const filteredProducts =
+    query === ''
+      ? clonedProducts
+      : clonedProducts.filter((product) =>
+          (product.name)
+          .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(query.toLowerCase().replace(/\s+/g, ''))
+      )
     return (
         <div className='w-full mx-auto grid grid-cols-3'>
             <div className='col-span-2'>
-               <ProductSearchBar/>
-               <DisplayProducts/>
+               <ProductSearchBar selected={selected} setSelected={setSelected} setQuery={setQuery}/>
+               <DisplayProducts filteredProducts={filteredProducts} query={query}/>
             </div>
             <Cart className='col-span-1'/>
         </div>

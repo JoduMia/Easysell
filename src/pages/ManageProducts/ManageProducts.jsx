@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ProductContext } from '../../App';
 
 const ManageProducts = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() =>{
-        fetch(`products.json`)
-        .then(res => res.json())
-        .then(data => setProducts(data))
-    }, [])
+    const {products} = useContext(ProductContext);
     return (
         <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -80,18 +76,6 @@ const ManageProducts = () => {
                                             <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
                                             <p class="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Monthly subscription</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
-                                            Archive
-                                        </button>
-
-                                        <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Download
-                                        </button>
                                     </div>
                                 </td>
                             </tr>
