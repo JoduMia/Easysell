@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import loginimg from "../../assets/login.jpg"
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/authcontext/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
+    const {emailPassSignIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        form.reset();
+
+        //sign in with email and password
+        emailPassSignIn(email, password)
+            .then(res => {
+                if(res.user){
+                    navigate(from, { replace: true });
+                    toast.success('Successfully logged in!!!');
+                }
+    }).catch(err => console.log(err.messages))
+    };
+
     return (
         <section className="bg-white dark:bg-gray-900">
     <div className="container flex items-center justify-center px-6 mx-auto my-32">
     <div className="text-center lg:text-left  p-5">
           <img className="w-full rounded-lg" src={loginimg} alt=""></img>
         </div>
-        <form className="w-full max-w-md">
-            
+        <form onSubmit={handleSubmit} className="w-full max-w-md">
+
 
             <h1 className="mt-3 text-center items-center  text-2xl font-semibold text-indigo-800 capitalize sm:text-3xl dark:text-white">Login now!</h1>
 
@@ -20,7 +44,7 @@ const Login = () => {
                     </svg>
                 </span>
 
-                <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-400 dark:focus:border-indigo-300 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                <input type="email" name='email' className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-400 dark:focus:border-indigo-300 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
             </div>
 
             <div className="relative flex items-center mt-4">
@@ -30,19 +54,19 @@ const Login = () => {
                     </svg>
                 </span>
 
-                <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-400 dark:focus:border-indigo-300 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
+                <input type="password" name='password' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-400 dark:focus:border-indigo-300 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
             </div>
 
             <div className="mt-6">
-                <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-500 rounded-lg hover:bg-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
-                Login 
+                <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-indigo-500 rounded-lg hover:bg-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-50">
+                Login
                 </button>
 
 
                 <div className="mt-6 text-center ">
-                    <a href="#" className="text-sm text-indigo-500 hover:underline dark:text-indigo-400">
+                    <Link to="/register" className="text-sm text-indigo-500 hover:underline dark:text-indigo-400">
                         Don’t have an account yet? Sign up
-                    </a>
+                    </Link>
                 </div>
             </div>
         </form>
