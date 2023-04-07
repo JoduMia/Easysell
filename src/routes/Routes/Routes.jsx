@@ -4,6 +4,7 @@ import Login from "../../pages/Login/Login";
 import POS from "../../pages/POS/POS";
 import ManageProducts from "../../pages/ManageProducts/ManageProducts";
 import Dashboard from "../../pages/Dashboard/Dashboard";
+import Register from './../../pages/Register/Register';
 
 export const routes = createBrowserRouter([
     {
@@ -27,5 +28,9 @@ export const routes = createBrowserRouter([
     {
         path: '/login',
         element: <Login/>
+    },
+    {
+        path: '/register',
+        element: <Register/>
     }
 ]);
